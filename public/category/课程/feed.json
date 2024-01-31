@@ -1,0 +1,16 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "流年印记 • All posts by \"课程\" category",
+    "description": "数学 & 软件工程",
+    "home_page_url": "https://hk2012.github.io",
+    "items": [
+        {
+            "id": "https://hk2012.github.io/2023/12/09/course/wumingsha/",
+            "url": "https://hk2012.github.io/2023/12/09/course/wumingsha/",
+            "title": "无名杀安装教程",
+            "date_published": "2023-12-09T07:48:53.000Z",
+            "content_html": "<h2 id=\"系统介绍\"><a class=\"anchor\" href=\"#系统介绍\">#</a> 系统介绍</h2>\n<ul>\n<li>\n<p>Windows 11 专业版<br />\n<img data-src=\"/img/software/window11%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B.png\" alt=\"系统介绍\" /></p>\n</li>\n<li>\n<p>无名杀官方下载链接</p>\n<ul>\n<li><span class=\"exturl\" data-url=\"aHR0cHM6Ly9naXRodWIuY29tL2xpYmNjeS9ub25hbWUvcmVsZWFzZXMvdGFnL2Nocm9taXVtNzctY2xpZW50\">https://github.com/libccy/noname/releases/tag/chromium77-client</span></li>\n<li><img data-src=\"/img/software/%E6%97%A0%E5%90%8D%E6%9D%80%E7%B3%BB%E7%BB%9F%E5%8C%85.png\" alt=\"系统介绍\" /></li>\n</ul>\n</li>\n<li>\n<p>如果不会翻墙，可以直接下载该文件，但是最好还是去官方下载，以免作者<span class=\"red\">夹带私货</span></p>\n<ul>\n<li><a href=\"/file/Noname-win32-x64.zip\">Noname-win32-x64.zip</a></li>\n</ul>\n</li>\n<li>\n<p>下载之后文件解压后的页面</p>\n<ul>\n<li><img data-src=\"/img/software/%E6%97%A0%E5%90%8D%E6%9D%80%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84.png\" alt=\"无名杀解压文件总体结构\" /></li>\n</ul>\n</li>\n<li>\n<p>双击 无名杀.exe 文件后，得到该页面</p>\n<ul>\n<li><img data-src=\"/img/software/%E6%97%A0%E5%90%8D%E6%9D%80%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2.png\" alt=\"无名杀初始页面\" /></li>\n</ul>\n</li>\n<li>\n<p>点击下载无名杀</p>\n<ul>\n<li><img data-src=\"/img/software/%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E6%97%A0%E5%90%8D%E6%9D%80.png\" alt=\"点击下载无名杀\" /></li>\n</ul>\n</li>\n<li>\n<p>下载成功后，自动进入页面，该页面是最原始，最纯净的页面，后面的特效需要添加扩展包</p>\n<ul>\n<li><img data-src=\"/img/software/%E6%97%A0%E5%90%8D%E6%9D%80%E6%9C%80%E5%8E%9F%E5%A7%8B%E5%88%9D%E5%A7%8B%E7%95%8C%E9%9D%A2.png\" alt=\"无名杀最原始初始界面\" /></li>\n</ul>\n</li>\n</ul>\n<h3 id=\"添加扩展包\"><a class=\"anchor\" href=\"#添加扩展包\">#</a> 添加扩展包</h3>\n<ul class=\"task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_0\" disabled=\"true\" /><label for=\"cbx_0\"> 未完成</label></li>\n</ul>\n",
+            "tags": []
+        }
+    ]
+}
