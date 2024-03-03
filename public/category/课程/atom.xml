@@ -3,9 +3,51 @@
     <id>https://hk2012.github.io</id>
     <title>流年印记 • Posts by &#34;课程&#34; category</title>
     <link href="https://hk2012.github.io" />
-    <updated>2023-12-09T07:48:53.000Z</updated>
+    <updated>2024-02-16T10:40:33.000Z</updated>
     <category term="记录" />
     <category term="总结" />
+    <entry>
+        <id>https://hk2012.github.io/2024/02/16/doc/plan/</id>
+        <title>课程计划</title>
+        <link rel="alternate" href="https://hk2012.github.io/2024/02/16/doc/plan/"/>
+        <content type="html">&lt;h1 id=&#34;学习计划&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#学习计划&#34;&gt;#&lt;/a&gt; 学习计划&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;消息队列&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#消息队列&#34;&gt;#&lt;/a&gt; 消息队列&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据库&#34;&gt;#&lt;/a&gt; 数据库&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;linux-操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux-操作系统&#34;&gt;#&lt;/a&gt; Linux 操作系统&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;软件工程概论&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#软件工程概论&#34;&gt;#&lt;/a&gt; 软件工程概论&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;微服务架构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#微服务架构&#34;&gt;#&lt;/a&gt; 微服务架构&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计算机网络&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;项目介绍&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工业互联网标识解析系统&lt;/li&gt;
+&lt;li&gt;ERP 管理系统&lt;/li&gt;
+&lt;li&gt;安全管家&lt;/li&gt;
+&lt;li&gt;EAP 数据采集平台&lt;/li&gt;
+&lt;li&gt;中电智恒 BPO 运营管理系统&lt;/li&gt;
+&lt;li&gt;O-wind 数字能源服务平台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <updated>2024-02-16T10:40:33.000Z</updated>
+    </entry>
     <entry>
         <id>https://hk2012.github.io/2023/12/09/course/wumingsha/</id>
         <title>无名杀安装教程</title>
@@ -54,10 +96,19 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;添加扩展包&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#添加扩展包&#34;&gt;#&lt;/a&gt; 添加扩展包&lt;/h3&gt;
-&lt;ul class=&#34;task-list&#34;&gt;
+&lt;h2 id=&#34;添加扩展包&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#添加扩展包&#34;&gt;#&lt;/a&gt; 添加扩展包&lt;/h2&gt;
+&lt;ul class=&#34;task-list primary&#34;&gt;
 &lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_0&#34;&gt; 未完成&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_1&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_1&#34;&gt; 已完成&lt;/label&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_2&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_2&#34;&gt; 三国杀十周年&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_3&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_3&#34;&gt; 手杀安装包&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt; 幻听铃音安装包&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_5&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_5&#34;&gt; 无名杀设置&lt;/label&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;注释&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#注释&#34;&gt;#&lt;/a&gt; 注释&lt;/h2&gt;
 </content>
         <updated>2023-12-09T07:48:53.000Z</updated>
     </entry>
