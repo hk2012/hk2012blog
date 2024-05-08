@@ -5,13 +5,49 @@
         <link>https://hk2012.github.io</link>
         <description>数学 &amp; 软件工程</description>
         <language>zh-CN</language>
-        <pubDate>Sat, 17 Feb 2024 16:30:00 +0800</pubDate>
-        <lastBuildDate>Sat, 17 Feb 2024 16:30:00 +0800</lastBuildDate>
+        <pubDate>Wed, 24 Apr 2024 09:05:00 +0800</pubDate>
+        <lastBuildDate>Wed, 24 Apr 2024 09:05:00 +0800</lastBuildDate>
         <category>记录</category>
         <category>总结</category>
         <category>项目熟悉</category>
         <category>项目开发</category>
         <category>熟悉项目</category>
+        <item>
+            <guid isPermalink="true">https://hk2012.github.io/2024/04/24/doc/%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81/</guid>
+            <title>介绍线程的生命周期和状态</title>
+            <link>https://hk2012.github.io/2024/04/24/doc/%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81/</link>
+            <category>总结</category>
+            <pubDate>Wed, 24 Apr 2024 09:05:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;介绍线程的生命周期和状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#介绍线程的生命周期和状态&#34;&gt;#&lt;/a&gt; 介绍线程的生命周期和状态？&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;/img/life.jpg&#34; alt=&#34;未命名文件.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 创建&lt;/strong&gt;&lt;br /&gt;
+当程序使用 new 关键字创建了一个线程之后，该线程就处于一个新建状态（初始状态），此时它和其他 Java 对象一样，仅仅由 Java 虚拟机为其分配了内存，并初始化了其成员变量值。此时的线程对象没有表现出任何线程的动态特征，程序也不会执行线程的线程执行体。&lt;br /&gt;
+&lt;strong&gt;2. 就绪&lt;/strong&gt;&lt;br /&gt;
+当线程对象调用了 Thread.start () 方法之后，该线程处于就绪状态。Java 虚拟机会为其创建方法调用栈和程序计数器，处于这个状态的线程并没有开始运行，它只是表示该线程可以运行了。从 start () 源码中看出，start 后添加到了线程列表中，接着在 native 层添加到 VM 中，至于该线程何时开始运行，取决于 JVM 里线程调度器的调度 (如果 OS 调度选中了，就会进入到运行状态)。&lt;br /&gt;
+&lt;strong&gt;3. 运行&lt;/strong&gt;&lt;br /&gt;
+当线程对象调用了 Thread.start () 方法之后，该线程处于就绪状态。添加到了线程列表中，如果 OS 调度选中了，就会进入到运行状态&lt;br /&gt;
+&lt;strong&gt; 4. 阻塞&lt;/strong&gt;&lt;br /&gt;
+阻塞状态是线程因为某种原因放弃 CPU 使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况大概三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、&lt;strong&gt;等待阻塞&lt;/strong&gt;：运行的线程执行 wait () 方法，JVM 会把该线程放入等待池中。(wait 会释放持有的锁)&lt;/li&gt;
+&lt;li&gt;2、&lt;strong&gt;同步阻塞&lt;/strong&gt;：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则 JVM 会把该线程放入锁池中。&lt;/li&gt;
+&lt;li&gt;3、&lt;strong&gt;其他阻塞&lt;/strong&gt;：运行的线程执行 sleep () 或 join () 方法，或者发出了 I/O 请求时，JVM 会把该线程置为阻塞状态。当 sleep () 状态超时、join () 等待线程终止或者超时、或者 I/O 处理完毕时，线程重新转入就绪状态。（注意，sleep 是不会释放持有的锁）。&lt;/li&gt;
+&lt;li&gt;线程睡眠：Thread.sleep (long millis) 方法，使线程转到阻塞状态。millis 参数设定睡眠的时间，以毫秒为单位。当睡眠结束后，就转为就绪（Runnable）状态。sleep () 平台移植性好。&lt;/li&gt;
+&lt;li&gt;线程等待：Object 类中的 wait () 方法，导致当前的线程等待，直到其他线程调用此对象的 notify () 方法或 notifyAll () 唤醒方法。这个两个唤醒方法也是 Object 类中的方法，行为等价于调用 wait (0) 一样。唤醒线程后，就转为就绪（Runnable）状态。&lt;/li&gt;
+&lt;li&gt;线程让步：Thread.yield () 方法，暂停当前正在执行的线程对象，把执行机会让给相同或者更高优先级的线程。&lt;/li&gt;
+&lt;li&gt;线程加入：join () 方法，等待其他线程终止。在当前线程中调用另一个线程的 join () 方法，则当前线程转入阻塞状态，直到另一个进程运行结束，当前线程再由阻塞转为就绪状态。&lt;/li&gt;
+&lt;li&gt;线程 I/O：线程执行某些 IO 操作，因为等待相关的资源而进入了阻塞状态。&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1zeXN0ZW0tOW42anA2NmE4cTViMDd3dXI1Yy5pbg==&#34;&gt;比如说监听 system.in&lt;/span&gt;，但是尚且没有收到键盘的输入，则进入阻塞状态。&lt;/li&gt;
+&lt;li&gt;线程唤醒：Object 类中的 notify () 方法，唤醒在此对象监视器上等待的单个线程。如果所有线程都在此对象上等待，则会选择唤醒其中一个线程，选择是任意性的，并在对实现做出决定时发生。类似的方法还有一个 notifyAll ()，唤醒在此对象监视器上等待的所有线程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;5. 死亡&lt;/strong&gt;&lt;br /&gt;
+线程会以以下三种方式之一结束，结束后就处于死亡状态:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;run () 方法执行完成，线程正常结束。&lt;/li&gt;
+&lt;li&gt;线程抛出一个未捕获的 Exception 或 Error。&lt;/li&gt;
+&lt;li&gt;直接调用该线程的 stop () 方法来结束该线程 —— 该方法容易导致死锁，通常不推荐使用&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://hk2012.github.io/2024/02/17/doc/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
             <title>双亲委派机制是什么</title>
@@ -1206,42 +1242,6 @@ volatile 是通过&lt;strong&gt;内存屏障&lt;/strong&gt;来禁止指令重排
 &lt;/ul&gt;
 &lt;p&gt;典型使用场景 DCL：&lt;/p&gt;
 &lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;//volatile 是防止指令重排&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;volatile&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; singleton&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 第一层判断 singleton 是不是为 null&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 如果不为 null 直接返回，这样就不必加锁了&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;singleton &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// 现在再加锁&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;synchronized&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token comment&#34;&gt;// 第二层判断&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token comment&#34;&gt;// 如果 A,B 两个线程都在 synchronized 等待&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token comment&#34;&gt;//A 创建完对象之后，B 还会再进入，如果不再检查一遍，B 又会创建一个对象&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;singleton &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                    singleton &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; singleton&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://hk2012.github.io/2024/01/02/doc/%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81/</guid>
-            <title>介绍线程的生命周期和状态</title>
-            <link>https://hk2012.github.io/2024/01/02/doc/%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81/</link>
-            <category>总结</category>
-            <pubDate>Tue, 02 Jan 2024 08:20:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;介绍线程的生命周期和状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#介绍线程的生命周期和状态&#34;&gt;#&lt;/a&gt; 介绍线程的生命周期和状态？&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;/img/life.jpg&#34; alt=&#34;未命名文件.jpg&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. 创建&lt;/strong&gt;&lt;br /&gt;
-当程序使用 new 关键字创建了一个线程之后，该线程就处于一个新建状态（初始状态），此时它和其他 Java 对象一样，仅仅由 Java 虚拟机为其分配了内存，并初始化了其成员变量值。此时的线程对象没有表现出任何线程的动态特征，程序也不会执行线程的线程执行体。&lt;br /&gt;
-&lt;strong&gt;2. 就绪&lt;/strong&gt;&lt;br /&gt;
-当线程对象调用了 Thread.start () 方法之后，该线程处于就绪状态。Java 虚拟机会为其创建方法调用栈和程序计数器，处于这个状态的线程并没有开始运行，它只是表示该线程可以运行了。从 start () 源码中看出，start 后添加到了线程列表中，接着在 native 层添加到 VM 中，至于该线程何时开始运行，取决于 JVM 里线程调度器的调度 (如果 OS 调度选中了，就会进入到运行状态)。&lt;br /&gt;
-&lt;strong&gt;3. 运行&lt;/strong&gt;&lt;br /&gt;
-当线程对象调用了 Thread.start () 方法之后，该线程处于就绪状态。添加到了线程列表中，如果 OS 调度选中了，就会进入到运行状态&lt;br /&gt;
-&lt;strong&gt; 4. 阻塞&lt;/strong&gt;&lt;br /&gt;
-阻塞状态是线程因为某种原因放弃 CPU 使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况大概三种：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1、&lt;strong&gt;等待阻塞&lt;/strong&gt;：运行的线程执行 wait () 方法，JVM 会把该线程放入等待池中。(wait 会释放持有的锁)&lt;/li&gt;
-&lt;li&gt;2、&lt;strong&gt;同步阻塞&lt;/strong&gt;：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则 JVM 会把该线程放入锁池中。&lt;/li&gt;
-&lt;li&gt;3、&lt;strong&gt;其他阻塞&lt;/strong&gt;：运行的线程执行 sleep () 或 join () 方法，或者发出了 I/O 请求时，JVM 会把该线程置为阻塞状态。当 sleep () 状态超时、join () 等待线程终止或者超时、或者 I/O 处理完毕时，线程重新转入就绪状态。（注意，sleep 是不会释放持有的锁）。&lt;/li&gt;
-&lt;li&gt;线程睡眠：Thread.sleep (long millis) 方法，使线程转到阻塞状态。millis 参数设定睡眠的时间，以毫秒为单位。当睡眠结束后，就转为就绪（Runnable）状态。sleep () 平台移植性好。&lt;/li&gt;
-&lt;li&gt;线程等待：Object 类中的 wait () 方法，导致当前的线程等待，直到其他线程调用此对象的 notify () 方法或 notifyAll () 唤醒方法。这个两个唤醒方法也是 Object 类中的方法，行为等价于调用 wait (0) 一样。唤醒线程后，就转为就绪（Runnable）状态。&lt;/li&gt;
-&lt;li&gt;线程让步：Thread.yield () 方法，暂停当前正在执行的线程对象，把执行机会让给相同或者更高优先级的线程。&lt;/li&gt;
-&lt;li&gt;线程加入：join () 方法，等待其他线程终止。在当前线程中调用另一个线程的 join () 方法，则当前线程转入阻塞状态，直到另一个进程运行结束，当前线程再由阻塞转为就绪状态。&lt;/li&gt;
-&lt;li&gt;线程 I/O：线程执行某些 IO 操作，因为等待相关的资源而进入了阻塞状态。&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1zeXN0ZW0tOW42anA2NmE4cTViMDd3dXI1Yy5pbg==&#34;&gt;比如说监听 system.in&lt;/span&gt;，但是尚且没有收到键盘的输入，则进入阻塞状态。&lt;/li&gt;
-&lt;li&gt;线程唤醒：Object 类中的 notify () 方法，唤醒在此对象监视器上等待的单个线程。如果所有线程都在此对象上等待，则会选择唤醒其中一个线程，选择是任意性的，并在对实现做出决定时发生。类似的方法还有一个 notifyAll ()，唤醒在此对象监视器上等待的所有线程。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;5. 死亡&lt;/strong&gt;&lt;br /&gt;
-线程会以以下三种方式之一结束，结束后就处于死亡状态:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;run () 方法执行完成，线程正常结束。&lt;/li&gt;
-&lt;li&gt;线程抛出一个未捕获的 Exception 或 Error。&lt;/li&gt;
-&lt;li&gt;直接调用该线程的 stop () 方法来结束该线程 —— 该方法容易导致死锁，通常不推荐使用&lt;/li&gt;
-&lt;/ul&gt;
- ]]></description>
         </item>
         <item>
             <guid isPermalink="true">https://hk2012.github.io/2024/01/02/doc/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%A4%9A%E5%B0%91%E7%BA%BF%E7%A8%8B%E5%90%88%E9%80%82/</guid>

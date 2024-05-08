@@ -1,7 +1,6 @@
 ---
 title: 课程计划
 category: 课程
-sticky: true
 abbrlink: 30550
 date: 2024-02-16 18:40:33
 ---
