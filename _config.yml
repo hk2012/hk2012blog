@@ -139,13 +139,17 @@ algolia:
   chunkSize: 5000
   indexName: "hongkuan"
   fields:
-    - title 
     - path 
     - categories 
-    - content:strip:truncate,0,4000
+    - content:strip:truncate,0,500
+    - excerpt:strip
     - gallery
+    - permalink
     - photos
+    - slug
     - tags
+    - title
+    
 markdown:
   render: # 渲染器设置
     html: false # 过滤 HTML 标签
