@@ -3,7 +3,7 @@ title: 线性代数（数学二）
 category: 数学
 math: true
 abbrlink: 17654
-date: 2023-09-01 16:45:53
+date: 2024-05-14 16:48:53
 ---
 
 # 行列式
@@ -409,3 +409,82 @@ $\therefore \quad \alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5$是线性相关�
     \end{vmatrix} = {0}
     \tag{2}
   $$
+- 计算行列式得  
+ $((\lambda - 4)(\lambda - 4)(\lambda + 7)+(-2)*9*(-5)+5*(-6)*(-3))-(5*(\lambda - 4)*(-5)+(-2)*(-6)*(\lambda + 7)+(\lambda - 4)*9*(-3))$
+- 备注：3行3列的矩阵 ， 可以直接采用[主对角线-副对角线]{.red}
+- 化简得：
+    - $\lambda^2 * (\lambda - 1) = 0$
+- 得到特征值：
+    1. $\lambda_1 = 1,\lambda_2 = \lambda_3 = 0$
+    2. $\lambda_1 = 1, \Rightarrow (E -A)x = 0$
+-   $$E - A = \begin{bmatrix}
+    -3 & -2 & 5\\ 
+    -6 & -3 & 9\\ 
+    -5 & -3 & 8\\ 
+    \end{bmatrix}
+    \Rightarrow
+    \begin{bmatrix}
+    1 & 0 & -1\\ 
+    0 & 1 & -1\\ 
+    0 & 0 & 0\\ 
+    \end{bmatrix}
+    $$
+-   $$
+    (E -A)x = 
+    \begin{bmatrix}
+    1 & 0 & -1\\ 
+    0 & 1 & -1\\ 
+    0 & 0 & 0\\ 
+    \end{bmatrix}
+    \left(\begin{matrix}
+    x_1 \\ 
+    x_2\\ 
+    x_3\\ 
+    \end{matrix}\right)
+    = 0
+    \Rightarrow
+    \begin{cases}
+    x_1 - x_3 = 0 \\
+    x_2 - x_3 = 0
+    \end{cases}
+    $$
+- 令 $x_1 = 1$ 得到特征矩阵：
+
+-   $$
+    \xi_1 = 
+    \left(\begin{matrix}
+    1 \\ 
+    1 \\ 
+    1 \\ 
+    \end{matrix}\right)
+    $$
+- 同理，当$\lambda_2 = \lambda_3 = 0$得：
+
+-   $$
+    (E -A)x = 
+    \begin{bmatrix}
+    -2 & 0 & 1\\ 
+    0 & -2 & 3\\ 
+    0 & 0 & 0\\ 
+    \end{bmatrix}
+    \left(\begin{matrix}
+    x_1 \\ 
+    x_2\\ 
+    x_3\\ 
+    \end{matrix}\right)
+    = 0
+    \Rightarrow
+    \begin{cases}
+    -2x_1 + x_3 = 0 \\
+    -2x_2 + 3x_3 = 0
+    \end{cases}
+    $$
+- 令 $x_1 = 1$ 得到特征矩阵：
+-   $$
+    \xi_2 = \xi_3 =  
+    \left(\begin{matrix}
+    1 \\ 
+    3 \\ 
+    2 \\ 
+    \end{matrix}\right)
+    $$

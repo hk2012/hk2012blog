@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hk2012.github.io/2023/09/01/math/linearAlgebra/</loc>
+    <loc>https://hk2012.github.io/2024/05/14/math/linearAlgebra/</loc>
     
-    <lastmod>2024-05-09</lastmod>
+    <lastmod>2024-05-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hk2012.github.io/2024/05/14/note/MySQL/</loc>
+    
+    <lastmod>2024-05-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

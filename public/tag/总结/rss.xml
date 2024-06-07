@@ -5,13 +5,151 @@
         <link>https://hk2012.github.io</link>
         <description>数学 &amp; 软件工程</description>
         <language>zh-CN</language>
-        <pubDate>Wed, 24 Apr 2024 09:05:00 +0800</pubDate>
-        <lastBuildDate>Wed, 24 Apr 2024 09:05:00 +0800</lastBuildDate>
+        <pubDate>Tue, 14 May 2024 11:10:00 +0800</pubDate>
+        <lastBuildDate>Tue, 14 May 2024 11:10:00 +0800</lastBuildDate>
         <category>总结</category>
         <category>项目开发</category>
         <category>记录</category>
         <category>项目熟悉</category>
         <category>熟悉项目</category>
+        <item>
+            <guid isPermalink="true">https://hk2012.github.io/2024/05/14/note/MySQL/</guid>
+            <title>MySQL 知识总结</title>
+            <link>https://hk2012.github.io/2024/05/14/note/MySQL/</link>
+            <category>总结</category>
+            <pubDate>Tue, 14 May 2024 11:10:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;索引&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#索引&#34;&gt;#&lt;/a&gt; 索引&lt;/h1&gt;
+&lt;h2 id=&#34;数据库索引的定义和作用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据库索引的定义和作用&#34;&gt;#&lt;/a&gt; 数据库索引的定义和作用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义： 索引（Index） 是数据库管理系统中的一种数据结构，它以特定的方式存储数据表中的某些字段（列）的信息，以加快数据检索的速度。索引类似于书籍的目录，通过它可以快速找到所需的信息，而无需扫描整个表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;提高查询速度：索引大大加快了 SELECT 查询的速度，尤其是对大表的查询。例如，搜索、排序和分组操作可以显著受益于索引。&lt;/li&gt;
+&lt;li&gt;提高数据的检索效率：通过减少磁盘 I/O 操作，索引能有效提升数据检索的效率。&lt;/li&gt;
+&lt;li&gt;强制唯一性：唯一索引（Unique Index）可以确保表中某列的值是唯一的，帮助维持数据的完整性。&lt;/li&gt;
+&lt;li&gt;加快表连接速度：在进行表连接（JOIN）操作时，索引能够加速连接操作。&lt;/li&gt;
+&lt;li&gt;提升排序和分组性能：在执行 ORDER BY 和 GROUP BY 语句时，索引能够加速这些操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引的类型&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;主键索引（Primary Key Index）：
+&lt;ul&gt;
+&lt;li&gt;唯一标识表中的记录，不允许空值。每个表只能有一个主键索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;唯一索引（Unique Index）：
+&lt;ul&gt;
+&lt;li&gt;保证索引列的所有值是唯一的，可以有空值。一个表可以有多个唯一索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;普通索引（普通索引 / Non-Unique Index）：
+&lt;ul&gt;
+&lt;li&gt;最基本的索引类型，不强制唯一性，允许重复值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;复合索引（Composite Index / 多列索引）：
+&lt;ul&gt;
+&lt;li&gt;包含多个列的索引，通过组合多个列来创建索引，提高组合查询的效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;全文索引（Full-Text Index）：
+&lt;ul&gt;
+&lt;li&gt;用于全文搜索，适合大文本字段的搜索。支持 MATCH AGAINST 操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;空间索引（Spatial Index）：
+&lt;ul&gt;
+&lt;li&gt;用于地理空间数据类型的索引，适用于空间数据的快速查询（如点、线、多边形等）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;哈希索引（Hash Index）：
+&lt;ul&gt;
+&lt;li&gt;使用哈希表实现的索引，适用于等值查询，不适用于范围查询。主要用于 Memory 引擎表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;聚簇索引（Clustered Index）：
+&lt;ul&gt;
+&lt;li&gt;数据行的物理顺序与索引的逻辑顺序一致。InnoDB 存储引擎的主键索引就是一种聚簇索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;非聚簇索引（Non-Clustered Index）：
+&lt;ul&gt;
+&lt;li&gt;索引顺序与数据行的物理顺序无关，每个索引项指向实际数据行的位置。MyISAM 引擎中的索引是非聚簇索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引的基础知识回顾&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建索引：使用 CREATE INDEX 语句来创建普通索引和唯一索引，使用 ALTER TABLE 来创建主键索引。&lt;/li&gt;
+&lt;li&gt;删除索引：使用 DROP INDEX 语句。&lt;/li&gt;
+&lt;li&gt;查看索引：使用 SHOW INDEX FROM table_name 或 EXPLAIN 语句来查看表的索引情况。&lt;/li&gt;
+&lt;li&gt;优化查询：通过分析和调整索引，可以显著优化查询性能。&lt;/li&gt;
+&lt;li&gt;理解和使用索引是数据库优化的重要环节，可以显著提升数据库系统的性能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;索引失效&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#索引失效&#34;&gt;#&lt;/a&gt; 索引失效&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在 MySQL 中，索引能够显著提高查询的效率，但在某些情况下，索引可能会失效，从而导致查询性能下降。以下是一些常见的 MySQL 索引失效场景及其原因：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用函数或操作符：
+&lt;ul&gt;
+&lt;li&gt;在查询条件中对索引列使用函数（如 LEFT (column, 3) = &#39;abc&#39;）或操作符（如 column + 1 = 5）会导致索引失效，因为 MySQL 无法对函数或操作符的结果进行索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;类型不匹配：
+&lt;ul&gt;
+&lt;li&gt;如果查询条件中的数据类型与索引列的数据类型不匹配，索引可能会失效。例如，索引列是字符串类型，但在查询中使用了数值类型的条件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;隐式转换：&lt;br /&gt;
+类似于类型不匹配，如果 MySQL 需要对索引列进行隐式转换（如将字符串转换为数值），索引也会失效。&lt;/li&gt;
+&lt;li&gt;前导通配符：
+&lt;ul&gt;
+&lt;li&gt;使用 LIKE 查询时，如果在通配符 % 或 _ 之前没有任何字符（如 LIKE &#39;% abc&#39;），索引将无法使用。这是因为 MySQL 无法确定从哪里开始扫描索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不符合最左前缀原则：
+&lt;ul&gt;
+&lt;li&gt;对于复合索引，如果查询条件不符合最左前缀原则，索引将失效。例如，复合索引 (a, b, c)，查询条件必须从 a 开始，如 (a, b) 或 (a)，而不能仅使用 b 或 c。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OR 条件：
+&lt;ul&gt;
+&lt;li&gt;在查询中使用 OR 条件，如果每个条件字段上没有独立的索引，索引会失效。例如，WHERE column1 = value1 OR column2 = value2，只有在 column1 和 column2 上都有独立索引时，索引才会生效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;范围查询影响后续列：
+&lt;ul&gt;
+&lt;li&gt;在复合索引中，如果其中一个列使用了范围查询（如 BETWEEN、&amp;lt;、&amp;gt;），则该列之后的索引列将无法使用。例如，复合索引 (a, b)，查询 WHERE a &amp;gt; 5 AND b = 10 中，索引 b 将失效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NULL 值判断：
+&lt;ul&gt;
+&lt;li&gt;对于索引列的 IS NULL 或 IS NOT NULL 判断，MySQL 通常不会使用索引，因为 NULL 值在索引中的处理有特殊情况。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;表扫描：
+&lt;ul&gt;
+&lt;li&gt;在某些情况下，即使存在索引，MySQL 优化器也可能选择进行全表扫描（Table Scan），例如当表非常小，或统计信息显示使用索引的代价更高时。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;通过注意上述这些情况，可以有效避免 MySQL 索引失效，确保查询性能的优化。在实际应用中，使用 EXPLAIN 语句可以帮助检查查询是否使用了索引，并进一步优化查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://hk2012.github.io/2024/04/24/doc/%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81/</guid>
             <title>介绍线程的生命周期和状态</title>
