@@ -149,4 +149,11 @@ date: 2023-08-27 15:48:53
   - 圆的曲率 (圆的半径为 $r$)
     - $\lim\limits_{\delta s \rightarrow{0}}|\dfrac{\delta \alpha}{\delta s}| = {\dfrac{1}{r}}$
 
-## 
+# 奇怪的图形
+
+- 图像网站： https://www.desmos.com/?lang=zh-CN
+
+## 重要的常考的图象函数
+
+1. $$(x^2 + 2y - 1)^3 - x^2y^3 = 1$$
+2. $$e^{sin(x)+cos(y)} = sin(e^{x+y})$$

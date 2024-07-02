@@ -4,10 +4,10 @@
     <title>流年印记 • Posts by &#34;笔记&#34; category</title>
     <link href="https://hk2012.github.io" />
     <updated>2024-05-14T03:10:00.000Z</updated>
+    <category term="项目开发" />
     <category term="总结" />
     <category term="记录" />
     <category term="项目熟悉" />
-    <category term="项目开发" />
     <category term="熟悉项目" />
     <entry>
         <id>https://hk2012.github.io/2024/05/14/note/MySQL/</id>
@@ -3844,18 +3844,6 @@
         <updated>2023-01-12T08:36:53.000Z</updated>
     </entry>
     <entry>
-        <id>https://hk2012.github.io/2023/01/11/note/influxdbTheory/</id>
-        <title>influxdb 知识总结</title>
-        <link rel="alternate" href="https://hk2012.github.io/2023/01/11/note/influxdbTheory/"/>
-        <content type="html">&lt;h2 id=&#34;介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#介绍&#34;&gt;#&lt;/a&gt; 介绍&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;定义：influxDB 是一个有 influxData 开发的开源时序型数据库，专注于海量时序数据的高性能读和写、高效存储和实时分析。广泛应用于 DevOps 监控、实时分析，物联网监控（loT 监控）等.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-        <category term="总结" />
-        <updated>2023-01-11T08:25:53.000Z</updated>
-    </entry>
-    <entry>
         <id>https://hk2012.github.io/2023/01/11/note/messageQueue/</id>
         <title>消息队列 知识总结</title>
         <link rel="alternate" href="https://hk2012.github.io/2023/01/11/note/messageQueue/"/>
@@ -3889,92 +3877,5 @@
 </content>
         <category term="总结" />
         <updated>2023-01-11T07:25:53.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://hk2012.github.io/2022/10/16/note/kafkaManual/</id>
-        <title>kafka使用手册</title>
-        <link rel="alternate" href="https://hk2012.github.io/2022/10/16/note/kafkaManual/"/>
-        <content type="html">&lt;p&gt;systemctl start kafka&lt;br /&gt;
-systemctl start zookeeper&lt;/p&gt;
-&lt;p&gt;zookeeper 启动：&lt;br /&gt;
-cd zookeeper home&lt;br /&gt;
- 例如：&lt;br /&gt;
-cd /home/user/app/zookeeper/bin&lt;br /&gt;
-sh &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3prU2VydmVyLnNo&#34;&gt;zkServer.sh&lt;/span&gt; start&lt;/p&gt;
-&lt;p&gt;1、启动 kafka&lt;br /&gt;
-nohup bin/kafka-server-start.sh config/server.properties &amp;amp;&lt;/p&gt;
-&lt;p&gt;2、创建 topic：&lt;br /&gt;
-bin/kafka-topics.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 &lt;br /&gt;
---create --partitions 1 --replication-factor 1 --topic flowpush&lt;br /&gt;
- 测试环境中&lt;br /&gt;
- bin/kafka-topics.sh --bootstrap-server 192.168.199.83:22390 &lt;br /&gt;
---create --partitions 1 --replication-factor 1 --topic flowpush&lt;/p&gt;
-&lt;p&gt;bin/kafka-topics.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 &lt;br /&gt;
---create --topic goods --partitions 1 --replication-factor 2&lt;/p&gt;
-&lt;p&gt;bin/kafka-topics.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 &lt;br /&gt;
---create --topic provider --partitions 1 --replication-factor 2&lt;/p&gt;
-&lt;p&gt;bin/kafka-topics.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 &lt;br /&gt;
---create --topic orders --partitions 10 --replication-factor 2&lt;/p&gt;
-&lt;p&gt;3、删除 topic&lt;br /&gt;
-bin/kafka-topics.sh --delete --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 --topic orders&lt;/p&gt;
-&lt;p&gt;3、查看 topic&lt;br /&gt;
-bin/kafka-topics.sh --list --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390&lt;br /&gt;
- 测试环境中&lt;br /&gt;
- bin/kafka-topics.sh --list --bootstrap-server 192.168.199.83:22390&lt;/p&gt;
-&lt;p&gt;bin/kafka-topics.sh --describe --bootstrap-server 192.168.199.83:22390 --topic orderSec-3&lt;/p&gt;
-&lt;p&gt;4、发送消息到 topic = orders  ------&lt;br /&gt;
-bin/kafka-console-producer.sh --broker-list 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 --topic orders&lt;/p&gt;
-&lt;p&gt;5、从头查看 topic=orders 的消息&lt;br /&gt;
- bin/kafka-console-consumer.sh --bootstrap-server 192.168.199.83:22390,192.168.199.83:22390,192.168.199.83:22390 --from-beginning --topic test&lt;br /&gt;
-bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:22390  --from-beginning --topic leakdatas&lt;br /&gt;
-6、查看 topic 最近的消息&lt;br /&gt;
-查看最新：&lt;br /&gt;
-bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:22390 --topic notes&lt;/p&gt;
-&lt;p&gt;7、查看每个分区的 offset&lt;br /&gt;
-./bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 192.168.139.199:22390,192.168.139.209:22390,192.168.139.210:22390 --topic test1&lt;br /&gt;
-./bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list  127.0.0.1:22390 --topic leakdatas&lt;/p&gt;
-&lt;p&gt;8、分区扩展&lt;br /&gt;
- bin/kafka-topics.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 --alter --topic orders --partitions 10&lt;/p&gt;
-&lt;p&gt;配置 jks 访问：&lt;br /&gt;
-查看 topic&lt;br /&gt;
-./kafka-topics.sh --list --zookeeper &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2thZmthLmJyb2tlci5jb206NjAwNjU=&#34;&gt;kafka.broker.com:60065&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;9、移动偏移量&lt;br /&gt;
-注意：执行此命令前需先断开消费者&lt;br /&gt;
- bin/kafka-consumer-groups.sh --bootstrap-server 192.168.199.83:22390 --group report --reset-offsets --all-topics --to-latest --execute&lt;br /&gt;
- 修改 topic 所有分区偏移量为指定偏移量：&lt;br /&gt;
-bin/kafka-consumer-groups.sh --bootstrap-server 192.168.199.83:22390 --group report --topic reportData --reset-offsets --to-offset 10 --execute&lt;br /&gt;
- 修改 topic 指定分区的偏移量：&lt;br /&gt;
-bin/kafka-consumer-groups.sh --bootstrap-server 192.168.199.83:22390 --group report --topic reportData:0 --reset-offsets --to-offset 15 --execute&lt;/p&gt;
-&lt;p&gt;10、查看 group 描述&lt;/p&gt;
-&lt;p&gt;删除 group 记录&lt;br /&gt;
-./kafka-consumer-groups.sh --bootstrap-server &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2thZmthLmJyb2tlci5jb206NjAwNjU=&#34;&gt;kafka.broker.com:60065&lt;/span&gt; --delete --group export&lt;/p&gt;
-&lt;p&gt;bin/kafka-consumer-groups.sh --bootstrap-server 192.168.199.95:22390,192.168.199.81:22390,192.168.199.120:22390 --group leakinfo --describe&lt;/p&gt;
-&lt;p&gt;11、查看 topic 描述&lt;br /&gt;
- bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --topic lx_test_topic --describe&lt;br /&gt;
-bin/kafka-topics.sh --bootstrap-server 192.168.199.95:22390 --describe --topic reportData&lt;br /&gt;
-bin/kafka-topics.sh --bootstrap-server 127.0.0.1:22390 --describe --topic reportData&lt;/p&gt;
-&lt;p&gt;12、修改日志保留时间&lt;br /&gt;
- 2.3 版本：&lt;br /&gt;
-bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name smsMessage --alter --add-config retention.ms=864000000    //10 天&lt;br /&gt;
- bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name quickRecognise --alter --add-config retention.ms=259200000   //3 天&lt;br /&gt;
- bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name leakdatas --alter --add-config retention.ms=259200000&lt;br /&gt;
-bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name leftDevices --alter --add-config retention.ms=259200000&lt;br /&gt;
-bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name reinstall --alter --add-config retention.ms=259200000&lt;br /&gt;
-bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name flowpush --alter --add-config retention.ms=604800000&lt;br /&gt;
-2.5 版本：&lt;br /&gt;
-bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type topics --entity-name my-topic --alter --add-config retention.ms=864000000&lt;/p&gt;
-&lt;p&gt;13、导出 topic 所有信息到文件&lt;br /&gt;
- nohup bin/kafka-console-consumer.sh --bootstrap-server 172.17.1.8:22390,172.17.1.9:22390,172.17.1.10:22390 --from-beginning --topic testlog &amp;gt;&amp;gt; test.out &amp;amp;&lt;br /&gt;
-nohup bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:22390 --from-beginning --topic leakdatas &amp;gt;&amp;gt; test.out &amp;amp;&lt;/p&gt;
-&lt;p&gt;14、查看 topic 配置参数&lt;br /&gt;
- bin/kafka-configs.sh --zookeeper 192.168.199.95:22392,192.168.199.81:22392,192.168.199.120:22392 --entity-type topics --entity-name flowpush --describe&lt;/p&gt;
-&lt;p&gt;bin/kafka-console-consumer.sh --bootstrap-server 192.168.199.83:22390 --topic leak_plugin12 --from-beginning&lt;/p&gt;
-&lt;p&gt;4、发送消息到 topic = leak_plugin12&lt;br /&gt;
-bin/kafka-console-producer.sh --broker-list 192.168.199.83:22390 --topic leak_plugin12&lt;/p&gt;
-&lt;p&gt;3、查看 topic&lt;br /&gt;
-bin/kafka-topics.sh --list --bootstrap-server 192.168.199.95:22390,192.168.199.81:22390,192.168.199.120:22390&lt;/p&gt;
-</content>
-        <category term="总结" />
-        <updated>2022-10-16T07:27:53.000Z</updated>
     </entry>
 </feed>
